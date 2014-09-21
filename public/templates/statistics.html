@@ -1,0 +1,20 @@
+<div class=jumbotron>
+    <div class=btn-group>
+        <div class='btn btn-primary' ng-model='timeRange' btn-radio='1'>Day</div>
+        <div class='btn btn-primary' ng-model='timeRange' btn-radio='7'>Week</div>
+        <div class='btn btn-primary' ng-model='timeRange' btn-radio='30'>Month</div>
+        <div class='btn btn-primary' ng-model='timeRange' btn-radio='365'>Year</div>
+    </div>
+
+    <h2>Time spent practicing by Day</h2>
+    <div chart=timeSpent chart-options=chartOptions class=ct-chart></div>
+    <h2>Time spent by Tempo</h2>
+    <div chart=tempoHistogram chart-type=Bar chart-options=chartOptions class=ct-chart></div>
+    <h2>Average Tempo by Day</h2>
+    <div chart=averageTempo class=ct-chart></div>
+
+    <button class='btn btn-lg btn-danger' ng-click='data.metronome=[]'>
+        RESET STATISTICS
+    </button>
+    <!--<pre>{{ data | json }}</pre>-->
+</div>

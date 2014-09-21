@@ -1,0 +1,30 @@
+{
+  "name": "rhythmTrainer",
+  "main": "rhythmTrainer.js",
+  "version": "0.0.0",
+  "authors": [
+    "Jonas Wagner <jonas@29a.ch>"
+  ],
+  "license": "NONE",
+  "homepage": "http://29a.ch/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.24",
+    "angular-bootstrap": "~0.11.0",
+    "bootstrap": "~3.2.0",
+    "underscore": "~1.7.0",
+    "angular-localforage": "~0.2.10",
+    "moment": "~2.8.3",
+    "chartist": "~0.1.12"
+  },
+  "devDependencies": {
+    "angular-route": "~1.2.24"
+  }
+}

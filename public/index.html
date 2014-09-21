@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Rhythm Trainer</title>
+
+        <!-- build:css css/main.css -->
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="bower_components/chartist/libdist/chartist.min.css" rel="stylesheet">
+        <!-- endbuild -->
+
+    </head>
+    <body>
+        <div class=container>
+            <div navigation>
+            </div>
+            <div ng-view>
+            </div>
+        </div>
+        <!-- build:js js/main.js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <script src="bower_components/chartist/libdist/chartist.js"></script>
+        <script src="bower_components/localforage/dist/localforage.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-localforage/dist/angular-localForage.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="src/app.js"></script>
+        <script src="src/audio.js"></script>
+        <script src="src/strobeTuner.js"></script>
+        <script src="src/templates.js"></script>
+        <!-- endbuild -->
+
+    </body>
+</html>

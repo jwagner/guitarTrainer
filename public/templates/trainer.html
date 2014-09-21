@@ -1,0 +1,33 @@
+<div class=jumbotron>
+    <div metronome>
+        <center>
+            <p style='font-size:4em;'>{{ bpm }}</p>
+            <input type=range name=speed min=10 max=400 step=1 ng-model="bpm">
+
+            <!--<button class='btn btn-lg' ng-click=''>-->
+                <!--<span class='glyphicon glyphicon-step-backward'></span>-->
+            <!--</button>-->
+
+            <button class='btn btn-lg btn-success' ng-click='(metronome.playing ? metronome.pause() : metronome.play())'>
+                <span class=glyphicon ng-class='{"glyphicon-play": !metronome.playing, "glyphicon-pause": metronome.playing}'></span>
+            </button>
+
+            <!--<button class='btn btn-lg btn-danger' ng-click=''>-->
+                <!--<span class='glyphicon glyphicon-record'></span>-->
+            <!--</button>-->
+
+            <!--<button class='btn btn-lg' ng-click=''>-->
+                <!--<span class='glyphicon glyphicon-step-forward'></span>-->
+            <!--</button>-->
+
+            <!--<button class='btn btn-lg' ng-click=''>-->
+                <!--<span class='glyphicon glyphicon-remove'></span>-->
+            <!--</button>-->
+        </center>
+    </div>
+    <br>
+    <div>
+        <canvas visualizer visualizer-metronome="metronome" style='background:black;width:100%;height:128px'></canvas>
+    </div>
+</div>
+

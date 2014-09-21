@@ -1,0 +1,10 @@
+<div class="btn-group">
+<h1>{{ noteName }}</h1>
+    <div class=cents style="width:100%;position:relative;height:1em;">
+        <div style="position: absolute;height: 100%;left: {{ cents > 0 ? 50 : 50+cents}}%;width:{{cents > 0 ? cents : -cents }}%;background: #428bca"></div>
+    </div>
+<p>{{ pitch.frequency | number : 1 }} ({{ pitch.correlation | number : 1 }})</p>
+<div>
+    <canvas style='display:block' strobe-panel frequency='frequency*2' periods='4' width=320 height=15></canvas>
+    <canvas strobe-panel frequency='frequency' periods='2' width=320 height=15></canvas>
+</div>
