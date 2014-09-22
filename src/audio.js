@@ -20,7 +20,7 @@ app.factory('audioInputSource', function($q, audioCtx, audioInputMediaStream){
     });
 });
 
-app.factory('pitchDetector', function($rootScope, audioCtx, audioInput){
+app.factory('pitchDetector', function($q, $rootScope, audioCtx, audioInputSource){
     return function(){
         var pitch = {
                 frequency: 440,
@@ -28,7 +28,7 @@ app.factory('pitchDetector', function($rootScope, audioCtx, audioInput){
             },
             A4 = 440,
             window = 2048,
-            maxFreq = 220,
+            maxFreq = 440,
             minFreq = 55,
             minLag = ~~(audioCtx.sampleRate/maxFreq),
             maxLag = ~~(audioCtx.sampleRate/minFreq);
@@ -58,6 +58,7 @@ app.factory('pitchDetector', function($rootScope, audioCtx, audioInput){
         }
 
         function differenceCorrectedAutocorrelation(signal, lag, offset, window, step){
+            //return autoCorrelation(signal, lag, offset, window, step);
             return autoCorrelation(signal, 0, offset, window, step) + autoCorrelation(signal, 0, offset+lag, window, step) - 2*autoCorrelation(signal, lag, offset, window, step);
         }
 
@@ -71,12 +72,29 @@ app.factory('pitchDetector', function($rootScope, audioCtx, audioInput){
             return sum;
         }
 
-        return audioInput(window*4, process).then(function(input){
+        var deferred = $q.defer(),
+            processor = audioCtx.createScriptProcessor(window*4, 1, 1),
+            bandpass = audioCtx.createBiquadFilter();
+
+        bandpass.type = 'bandpass';
+        bandpass.frequency.value = (minFreq + maxFreq)/2
+        bandpass.Q.value = (bandpass.frequency.value / (maxFreq - minFreq))*1.1;
+
+        bandpass.connect(processor);
+        processor.connect(audioCtx.destination);
+        processor.onaudioprocess = process;
+
+        return audioInputSource.then(function(input){
+            input.connect(bandpass);
             return {
                 pitch: pitch,
-                disconnect: input.disconnect.bind(input)
+                disconnect: function(){
+                    bandpass.disconnect();
+                    processor.disconnect();
+                }
             };
         });
+
     };
 });
 
